@@ -1,1 +1,27 @@
-tweets.erb
+<% if flash.has?(:wrong_user) %>
+  <%= flash[:wrong_user] %>
+<% end %>
+<% if flash.has?(:wrong_user_edit) %>
+  <%= flash[:wrong_user_edit] %>
+<% end %>
+<h1>Welcome, <%= @user.username %></h1>
+<table align="center">
+        <tr>
+          <th>tweet</th>
+          <th>user</th>
+        </tr>
+
+        <% Tweet.all.each do |tweet| %>
+        <tr>
+          <td><a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a></td>
+          <td><%= tweet.user.username %></td>
+        </tr>
+        <% end %>
+        
+</table>
+<a class="button" href="/tweets/new">Create New Tweet</a>
+<br>
+<a class="button" href="/logout">Log out</a>
+
+
+        
