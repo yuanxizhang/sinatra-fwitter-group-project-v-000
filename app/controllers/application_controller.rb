@@ -7,4 +7,10 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
+  set :views, proc { File.join(root, '../views/') }
+ 
+  get '/' do
+    erb :"application/index"
+  end
+
 end
