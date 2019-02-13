@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   def slug
-      self.name.strip.gsub(" ", "-").downcase
+      self.username.strip.gsub(" ", "-").downcase
   end
 
   def self.find_by_slug(slug)
