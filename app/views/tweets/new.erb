@@ -1,7 +1,7 @@
 <h1>Create a new tweet</h1>
 
-<% if flash.has?(:empty_tweet) %>
-  <%= flash[:empty_tweet] %>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
 <% end %>
 
 <form action="/tweets" method="POST">

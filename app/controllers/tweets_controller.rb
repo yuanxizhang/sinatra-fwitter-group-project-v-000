@@ -27,6 +27,10 @@ class TweetsController < ApplicationController
   end
 
   post '/tweets' do
+  	if params["content"].empty?
+      flash[:message] = "Please enter content for your tweet"
+      redirect to '/tweets/new'
+    end
     @tweet = current_user.tweets.create(:content => params[:content])
      redirect to "/tweets"
   end
@@ -64,23 +68,22 @@ class TweetsController < ApplicationController
       redirect to "/tweets/#{params[:id]}/edit"
     end
 
-    @tweet = current_user.tweets.find_by(id: params[:id])
-    if @tweet
-     		@tweet.update(:content => params[:content])
-     		erb :"/tweets/tweets"
+    tweet = Tweet.find(params[:id])
+    if tweet.user == current_user
+      redirect to (tweet.update(content: params[:content]) ? "/tweets/#{tweet.id}" : "/tweets/#{tweet.id}/edit")
     else
-    		redirect to "/tweets/#{@tweet.id}/edit"
-    end  
+      redirect to '/tweets'
+    end
   end
 
   post '/tweets/:id/delete' do
-    @tweet = current_user.tweets.find_by(id: params[:id])
-    if tweet && tweet.destroy
-        redirect '/tweets'
-    else
-        flash[:message] = "You can't delete someone else's tweet!"
-        erb :"/tweets/tweets"
+    @tweet = Tweet.find(params[:id])
+    if current_user.id != @tweet.user_id
+      flash[:message] = "Sorry you can only delete your own tweets"
+      redirect to '/tweets'
     end
+    @tweet.delete if @tweet.user == current_user
+    redirect to '/tweets'
   end
 
 
