@@ -3,23 +3,25 @@
 <% end %>
 <a class="button" href="/logout">Log out</a>
 
-<h1>Tweets by <%= @user.username %></h1>
+<h3>user: <%= @user.username %></h3>
 <table align="center">
         <tr>
           <th>Tweet</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>User</th>
+          <!-- <th>Edit</th>
+          <th>Delete</th> -->
         </tr>
 
-        <% @user.tweets.each do |tweet| %>
+        <% Tweet.all.each do |tweet| %>
         <tr>
           <td><a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a></td>
-          <td><a href="/tweets/<%= tweet.id %>/edit" class="button">Edit</a></td>
+          <td><a href="/users/<%= @user.slug %>"><%= tweet.user.username %></a></td>
+          <!-- <td><a href="/tweets/<%= tweet.id %>/edit" class="button">Edit</a></td>
           <td>
               <form action="/tweets/<%= tweet.id%>/delete" method="post">
                     <input type="submit" class="button" name="delete" value="Delete">
               </form>
-          </td>
+          </td> -->
         </tr>
         <% end %>
         <tr>

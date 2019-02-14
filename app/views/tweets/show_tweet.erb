@@ -1,5 +1,6 @@
 <table align="center">       
         <tr><td><h5><%= @tweet.content %></h5></td></tr>
+        <tr><td><p>by <%= @tweet.user.username %></p></td></tr>
         <tr>
         	<td><a class="button" href="/tweets/<%= @tweet.id %>/edit">Edit</a></td>
         </tr>

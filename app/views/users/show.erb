@@ -1,4 +1,6 @@
-<h1>Hello! <%= @user.username %></h1>
+<a class="button" href="/logout">Log out</a>
+<h3>user: <%= @user.username %></h3>
+<h1>Tweets by <%= @user.username %></h1>
 <table align="center">
         <tr>
           <th>Tweet</th>
@@ -8,13 +10,19 @@
 
         <% @user.tweets.each do |tweet| %>
         <tr>
-          <td> <a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a></td>
-          <td> <a href="/tweets/<%= tweet.id %>/edit">Edit</a></td>
-          <td> <a href="/tweets/<%= tweet.id %>/delete">Delete</a></td>
+          <td><a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a></td>
+          <td><a href="/tweets/<%= tweet.id %>/edit" class="button">Edit</a></td>
+          <td> 
+              <form action="/tweets/<%= tweet.id%>/delete" method="post">
+                    <input type="submit" class="button" name="delete" value="Delete">
+              </form>
+          </td>
         </tr>
         <% end %>
-        
+        <tr>
+          <td><a class="button" href="/tweets/new">New Tweet</a></td>
+          <td></td>
+          <td></td>
+        </tr>
 </table>
-<br>
-<br>
-<a class="button" href="/tweets/new">Create New Tweet</a>
+
