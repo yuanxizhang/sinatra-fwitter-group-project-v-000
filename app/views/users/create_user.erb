@@ -1,13 +1,30 @@
 <h1>Create a new account</h1>
 <form action='/signup' method="POST">
-	<label for "username">Username:</label>
-	<input type="text" id="username" name="username">
-	<br />
-	<label for "email">Email:</label>
-	<input type="text" id="email" name="email">
-	<br />
-	<label for "password">Password:</label>
-	<input type="text" id="password" name="password">
-	<br />
-	<input type="submit" id="submit" value="Sign Up">
+	<table align="center">       
+        <tr>
+        	<td>
+        			<label for "username">Username:</label>
+							<input type="text" id="username" name="username">
+        	</td>
+       </tr>
+       <tr>
+        	<td>
+        			<label for "email">Email:</label>
+							<input type="text" id="email" name="email">
+        	</td>
+       </tr>
+       <tr>
+        	<td>
+        			<label for "password">Password:</label>
+							<input type="text" id="password" name="password">
+        	</td>
+       </tr>
+       <tr>
+        	<td>
+        			<input class="button" type="submit" id="submit" value="Sign Up">
+        	</td>
+       </tr>
+        <tr><td>Already a Fwitter user?</td></tr> 
+        <tr><td><a class="button" href="/login">Log in</a></td></tr>        
+	</table>
 </form>

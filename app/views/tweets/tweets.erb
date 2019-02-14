@@ -1,25 +1,35 @@
 <% if flash.has?(:message) %>
   <%= flash[:message] %>
 <% end %>
+<a class="button" href="/logout">Log out</a>
 
-<h1>Welcome, <%= @user.username %></h1>
+<h1>Tweets by <%= @user.username %></h1>
 <table align="center">
         <tr>
-          <th>tweet</th>
-          <th>user</th>
+          <th>Tweet</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
-        <% Tweet.all.each do |tweet| %>
+        <% @user.tweets.each do |tweet| %>
         <tr>
           <td><a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a></td>
-          <td><%= tweet.user.username %></td>
+          <td><a href="/tweets/<%= tweet.id %>/edit" class="button">Edit</a></td>
+          <td>
+              <form action="/tweets/<%= tweet.id%>/delete" method="post">
+                    <input type="submit" class="button" name="delete" value="Delete">
+              </form>
+          </td>
         </tr>
         <% end %>
+        <tr>
+          <td><a class="button" href="/tweets/new">New Tweet</a></td>
+          <td></td>
+        </tr>
         
 </table>
-<a class="button" href="/tweets/new">Create New Tweet</a>
-<br>
-<a class="button" href="/logout">Log out</a>
+
+
 
 
         

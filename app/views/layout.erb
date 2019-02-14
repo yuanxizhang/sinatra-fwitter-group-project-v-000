@@ -4,15 +4,16 @@
     <title>Fwitter</title>
     <STYLE type="text/css">
         H1 {border: none; text-align: center}
+        H5 {border: none; text-align: left}
         table {width: 50%;}
         th, td {
-                  border-bottom: 1px solid #ddd;
                   padding: 15px;
                   text-align: left;
                   height: 20px;
                 }
+        input[type="text"] {width: 200px; height: 30px; font-size: 16px;}
         .button {
-                  background-color: #6CADDE;
+                  background-color: #00aced;
                   border: none;
                   border-radius: 15px;
                   color: white;
@@ -20,14 +21,14 @@
                   text-align: center;
                   text-decoration: none;
                   display: inline-block;
-                  font-size: 16px;
+                  font-size: 18px;
                 }
     </STYLE>
   </head>
   <body>
 
     <div class="container">
-      <h1>Welcome to Fwitter!</h1>
+      <p><a class="button" href="/">Fwitter</a></p>
     </div>
     <%= yield %>
   </body>

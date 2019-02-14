@@ -1,10 +1,15 @@
-<h5><%= @tweet.content %></h5>    
-<br><br>
-<a class="button" href="/tweets/<%= @tweet.id %>/edit">Edit Tweet</a>
-<br>
-<form action="/tweets/<%=@tweet.id%>/delete" method="post">
-	<input type="submit" class="button" name="delete" value="Delete Tweet">
-</form>
-<br>
-<a class="button" href="/tweets">All Tweet</a>
-<br>
+<table align="center">       
+        <tr><td><h5><%= @tweet.content %></h5></td></tr>
+        <tr>
+        	<td><a class="button" href="/tweets/<%= @tweet.id %>/edit">Edit</a></td>
+        </tr>
+        <tr>       
+        		<td>	
+        			<form action="/tweets/<%=@tweet.id%>/delete" method="post">
+										<input type="submit" class="button" name="delete" value="Delete">
+							</form>
+						</td>							
+				</tr>        
+</table>
+ 
+

@@ -4,8 +4,10 @@
   <%= flash[:message] %>
 <% end %>
 <form action="/tweets/<%=@tweet.id%>" method="POST">
-        <input type="hidden" name="_method" value="patch">
-        <label>Content: </label><br>
-        <input type="text" id="content" name="content" value="<%=@tweet.content%>"> <br>
-				<input type="submit" value="submit" class="button">
+		<input type="hidden" name="_method" value="patch">
+				<table align="center">       
+        <tr><td><label>Content: </label></td></tr>
+        <tr><td><input type="text" id="content" name="content" value="<%=@tweet.content%>" width="90%"></td></tr> 
+        <tr><td><input type="submit" value="submit" class="button"></td></tr>        
+		</table>
 </form>
